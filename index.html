@@ -1,342 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>
-  'use strict';
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  const GROUPS = [
-    { key: 'y3Girls', year: 'Year 3', gender: 'Girls' },
-    { key: 'y3Boys', year: 'Year 3', gender: 'Boys' },
-    { key: 'y4Girls', year: 'Year 4', gender: 'Girls' },
-    { key: 'y4Boys', year: 'Year 4', gender: 'Boys' },
-    { key: 'y5Girls', year: 'Year 5', gender: 'Girls' },
-    { key: 'y5Boys', year: 'Year 5', gender: 'Boys' },
-    { key: 'y6Girls', year: 'Year 6', gender: 'Girls' },
-    { key: 'y6Boys', year: 'Year 6', gender: 'Boys' },
-    { key: 'y7Girls', year: 'Year 7', gender: 'Girls' },
-    { key: 'y7Boys', year: 'Year 7', gender: 'Boys' },
-    { key: 'y8Girls', year: 'Year 8', gender: 'Girls' },
-    { key: 'y8Boys', year: 'Year 8', gender: 'Boys' }
-  ];
+  <title>Hatton Flexi Boarding</title>
 
-  const state = {
-    payload: null,
-    year: null,
-    month: null,
-    selectedDate: null,
-    loading: false
-  };
+  <style>
+    :root {
+      --background: #f2f2f7;
+      --card: #ffffff;
+      --text: #1c1c1e;
+      --secondary: #6e6e73;
+      --border: #d1d1d6;
+      --blue: #007aff;
+      --green: #34c759;
+      --red: #ff3b30;
+      --grey: #c7c7cc;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
 
-  const elements = {
-    monthTitle:
-      document.getElementById('monthTitle'),
+    * {
+      box-sizing: border-box;
+    }
 
-    previousMonth:
-      document.getElementById('previousMonth'),
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--background);
+      color: var(--text);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+    }
 
-    nextMonth:
-      document.getElementById('nextMonth'),
+    button,
+    a {
+      font: inherit;
+    }
 
-    calendarGrid:
-      document.getElementById('calendarGrid'),
+    .page {
+      width: min(100%, 720px);
+      margin: 0 auto;
+      padding: 20px 14px 48px;
+    }
 
-    detailsArea:
-      document.getElementById('detailsArea'),
+    .site-header {
+      margin-bottom: 18px;
+      padding: 8px 4px;
+    }
 
-    loadingOverlay:
-      document.getElementById('loadingOverlay'),
+    .site-header h1 {
+      margin: 0;
+      font-size: clamp(28px, 7vw, 42px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
 
-    loadingText:
-      document.getElementById('loadingText'),
+    .site-header p {
+      margin: 9px 0 0;
+      color: var(--secondary);
+      font-size: 15px;
+      line-height: 1.45;
+    }
 
-    errorMessage:
-      document.getElementById('errorMessage')
-  };
+    .card {
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
 
+    .calendar-card {
+      padding: 16px;
+    }
 
-  document.addEventListener(
-    'DOMContentLoaded',
-    initialise
-  );
+    .month-navigation {
+      display: grid;
+      grid-template-columns: 46px 1fr 46px;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
 
+    .month-navigation h2 {
+      margin: 0;
+      text-align: center;
+      font-size: 21px;
+      letter-spacing: -0.02em;
+    }
 
-  elements.previousMonth.addEventListener(
-    'click',
-    () => changeMonth(-1)
-  );
+    .month-button {
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: #eef5ff;
+      color: var(--blue);
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+    }
 
+    .month-button:disabled {
+      opacity: 0.25;
+      cursor: default;
+    }
 
-  elements.nextMonth.addEventListener(
-    'click',
-    () => changeMonth(1)
-  );
+    .weekday-row,
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 7px;
+    }
 
+    .weekday-row {
+      margin-bottom: 7px;
+    }
 
-  async function initialise() {
-    setLoading(true, 'Loading availability…');
-    clearError();
+    .weekday {
+      color: var(--secondary);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+    }
 
-    try {
-      const response = await fetch(
-        './availability.json?time=' + Date.now(),
-        {
-          cache: 'no-store'
-        }
-      );
+    .day,
+    .placeholder {
+      aspect-ratio: 1;
+    }
 
-      if (!response.ok) {
-        throw new Error(
-          'Availability data returned HTTP ' +
-          response.status
-        );
+    .day {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-width: 0;
+      border: 0;
+      border-radius: 50%;
+      color: #ffffff;
+      cursor: pointer;
+      transition:
+        transform 120ms ease,
+        box-shadow 120ms ease;
+    }
+
+    .day:not(:disabled):active {
+      transform: scale(0.93);
+    }
+
+    .day.available {
+      background: var(--green);
+    }
+
+    .day.full {
+      background: var(--red);
+    }
+
+    .day.unavailable {
+      background: var(--grey);
+      color: #5d5d63;
+    }
+
+    .day:disabled {
+      cursor: default;
+    }
+
+    .day.selected {
+      box-shadow:
+        0 0 0 3px #ffffff,
+        0 0 0 6px var(--blue);
+    }
+
+    .day-number {
+      font-size: clamp(13px, 3.6vw, 17px);
+      font-weight: 650;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      margin-top: 18px;
+      color: var(--secondary);
+      font-size: 13px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .legend-dot.available {
+      background: var(--green);
+    }
+
+    .legend-dot.full {
+      background: var(--red);
+    }
+
+    .legend-dot.unavailable {
+      background: var(--grey);
+    }
+
+    #detailsArea {
+      scroll-margin-top: 16px;
+      margin-top: 18px;
+    }
+
+    .prompt {
+      padding: 22px;
+      text-align: center;
+    }
+
+    .prompt h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .prompt p {
+      margin: 0;
+      color: var(--secondary);
+      line-height: 1.45;
+    }
+
+    .details-card {
+      overflow: hidden;
+    }
+
+    .details-header {
+      padding: 22px 20px 16px;
+    }
+
+    .details-header h2 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -0.025em;
+    }
+
+    .details-header p {
+      margin: 7px 0 0;
+      color: var(--secondary);
+      font-size: 14px;
+    }
+
+    .availability-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .availability-table th,
+    .availability-table td {
+      padding: 13px 10px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .availability-table th {
+      color: var(--secondary);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .availability-table th:first-child,
+    .availability-table td:first-child {
+      padding-left: 18px;
+      text-align: left;
+    }
+
+    .year-label {
+      font-weight: 650;
+    }
+
+    .status {
+      display: inline-flex;
+      justify-content: center;
+      min-width: 90px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .status.available {
+      background: rgba(52, 199, 89, 0.14);
+      color: #167532;
+    }
+
+    .status.full {
+      background: rgba(255, 59, 48, 0.13);
+      color: #b42318;
+    }
+
+    .status.unavailable {
+      background: rgba(142, 142, 147, 0.16);
+      color: #646469;
+    }
+
+    .request-area {
+      padding: 18px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .request-button {
+      display: block;
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 14px;
+      background: var(--blue);
+      color: #ffffff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .request-help {
+      margin: 11px 6px 0;
+      color: var(--secondary);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .error-message {
+      margin: 0 0 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #ffe9e7;
+      color: #9f211a;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      background: rgba(242, 242, 247, 0.85);
+      backdrop-filter: blur(8px);
+    }
+
+    .loading-box {
+      min-width: 210px;
+      padding: 24px;
+      border-radius: 18px;
+      background: #ffffff;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      margin: 0 auto 13px;
+      border: 4px solid #d8e9ff;
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .loading-box p {
+      margin: 0;
+      color: var(--secondary);
+      font-size: 14px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (min-width: 620px) {
+      .page {
+        padding-top: 38px;
       }
 
-      state.payload = await response.json();
+      .calendar-card {
+        padding: 24px;
+      }
 
-      const today = parseIsoDate(
-        state.payload.firstDate
-      );
-
-      state.year = today.getFullYear();
-      state.month = today.getMonth();
-
-      renderCalendar();
-      setLoading(false);
-    } catch (error) {
-      handleFailure(error);
+      .weekday-row,
+      .calendar-grid {
+        gap: 11px;
+      }
     }
-  }
+  </style>
+</head>
 
+<body>
+  <main class="page">
+    <header class="site-header">
+      <h1>Flexi Boarding</h1>
+      <p>
+        Select a date to view current availability for
+        Hatton House.
+      </p>
+    </header>
 
-  function changeMonth(direction) {
-    if (
-      state.loading ||
-      !state.payload
-    ) {
-      return;
-    }
+    <div
+      id="errorMessage"
+      class="error-message hidden"
+      role="alert"
+    ></div>
 
-    const requested = new Date(
-      state.year,
-      state.month + direction,
-      1
-    );
+    <section class="card calendar-card">
+      <div class="month-navigation">
+        <button
+          id="previousMonth"
+          class="month-button"
+          type="button"
+          aria-label="Previous month"
+        >
+          ‹
+        </button>
 
-    if (!isMonthWithinRange(requested)) {
-      return;
-    }
+        <h2 id="monthTitle">Loading…</h2>
 
-    state.year = requested.getFullYear();
-    state.month = requested.getMonth();
-    state.selectedDate = null;
+        <button
+          id="nextMonth"
+          class="month-button"
+          type="button"
+          aria-label="Next month"
+        >
+          ›
+        </button>
+      </div>
 
-    renderCalendar();
-    renderPrompt();
-  }
+      <div class="weekday-row" aria-hidden="true">
+        <div class="weekday">Sun</div>
+        <div class="weekday">Mon</div>
+        <div class="weekday">Tue</div>
+        <div class="weekday">Wed</div>
+        <div class="weekday">Thu</div>
+        <div class="weekday">Fri</div>
+        <div class="weekday">Sat</div>
+      </div>
 
+      <div
+        id="calendarGrid"
+        class="calendar-grid"
+        role="grid"
+        aria-label="Flexi boarding availability calendar"
+      ></div>
 
-  function isMonthWithinRange(monthDate) {
-    const first = parseIsoDate(
-      state.payload.firstDate
-    );
+      <div class="legend">
+        <div class="legend-item">
+          <span class="legend-dot available"></span>
+          <span>Some availability</span>
+        </div>
 
-    const last = parseIsoDate(
-      state.payload.finalDate
-    );
+        <div class="legend-item">
+          <span class="legend-dot full"></span>
+          <span>All groups full</span>
+        </div>
 
-    const firstMonth = new Date(
-      first.getFullYear(),
-      first.getMonth(),
-      1
-    );
+        <div class="legend-item">
+          <span class="legend-dot unavailable"></span>
+          <span>Unavailable</span>
+        </div>
+      </div>
+    </section>
 
-    const lastMonth = new Date(
-      last.getFullYear(),
-      last.getMonth(),
-      1
-    );
-
-    return (
-      monthDate >= firstMonth &&
-      monthDate <= lastMonth
-    );
-  }
-
-
-  function renderCalendar() {
-    const monthStart = new Date(
-      state.year,
-      state.month,
-      1
-    );
-
-    const daysInMonth = new Date(
-      state.year,
-      state.month + 1,
-      0
-    ).getDate();
-
-    elements.monthTitle.textContent =
-      monthStart.toLocaleDateString(
-        'en-GB',
-        {
-          month: 'long',
-          year: 'numeric'
-        }
-      );
-
-    const previous = new Date(
-      state.year,
-      state.month - 1,
-      1
-    );
-
-    const next = new Date(
-      state.year,
-      state.month + 1,
-      1
-    );
-
-    elements.previousMonth.disabled =
-      !isMonthWithinRange(previous);
-
-    elements.nextMonth.disabled =
-      !isMonthWithinRange(next);
-
-    elements.calendarGrid.innerHTML = '';
-
-    for (
-      let index = 0;
-      index < monthStart.getDay();
-      index++
-    ) {
-      const placeholder =
-        document.createElement('div');
-
-      placeholder.className = 'placeholder';
-      placeholder.setAttribute(
-        'aria-hidden',
-        'true'
-      );
-
-      elements.calendarGrid.appendChild(
-        placeholder
-      );
-    }
-
-    for (
-      let dayNumber = 1;
-      dayNumber <= daysInMonth;
-      dayNumber++
-    ) {
-      const date = new Date(
-        state.year,
-        state.month,
-        dayNumber
-      );
-
-      const isoDate = formatIsoDate(date);
-
-      const data =
-        state.payload.dates[isoDate] || {
-          status: 'unavailable',
-          selectable: false,
-          groups: {}
-        };
-
-      const day = {
-        date: isoDate,
-        day: dayNumber,
-        status: data.status,
-        selectable: Boolean(data.selectable),
-        groups: GROUPS.map(group => ({
-          ...group,
-          status:
-            data.groups[group.key] ||
-            'unavailable',
-
-          statusLabel: statusLabel(
-            data.groups[group.key] ||
-            'unavailable'
-          )
-        })),
-
-        displayDate: date.toLocaleDateString(
-          'en-GB',
-          {
-            weekday: 'long',
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric'
-          }
-        )
-      };
-
-      renderDayButton(day);
-    }
-  }
-
-
-  function renderDayButton(day) {
-    const button =
-      document.createElement('button');
-
-    button.type = 'button';
-    button.className =
-      `day ${day.status}`;
-
-    button.setAttribute(
-      'role',
-      'gridcell'
-    );
-
-    button.setAttribute(
-      'aria-label',
-      `${day.displayDate}: ${statusLabel(day.status)}`
-    );
-
-    const number =
-      document.createElement('span');
-
-    number.className = 'day-number';
-    number.textContent = day.day;
-
-    button.appendChild(number);
-
-    if (day.date === state.selectedDate) {
-      button.classList.add('selected');
-    }
-
-    if (day.selectable) {
-      button.addEventListener(
-        'click',
-        () => selectDate(day)
-      );
-    } else {
-      button.disabled = true;
-    }
-
-    elements.calendarGrid.appendChild(button);
-  }
-
-
-  function selectDate(day) {
-    state.selectedDate = day.date;
-
-    renderCalendar();
-    renderDetails(day);
-
-    window.setTimeout(() => {
-      elements.detailsArea.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }, 60);
-  }
-
-
-  function renderPrompt() {
-    elements.detailsArea.innerHTML = `
+    <section id="detailsArea">
       <div class="card prompt">
         <h2>Select a date</h2>
         <p>
@@ -344,206 +490,534 @@
           availability.
         </p>
       </div>
-    `;
-  }
+    </section>
+  </main>
 
+  <div
+    id="loadingOverlay"
+    class="loading-overlay"
+    role="status"
+    aria-live="polite"
+  >
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <p id="loadingText">Loading availability…</p>
+    </div>
+  </div>
 
-  function renderDetails(day) {
-    const rows = buildRows(day.groups);
+  <script>
+    'use strict';
 
-    elements.detailsArea.innerHTML = `
-      <article class="card details-card">
-        <header class="details-header">
-          <h2>
-            ${escapeHtml(day.displayDate)}
-          </h2>
-
-          <p>
-            Availability is shown separately for boys
-            and girls.
-          </p>
-        </header>
-
-        <table class="availability-table">
-          <thead>
-            <tr>
-              <th scope="col">Year group</th>
-              <th scope="col">Girls</th>
-              <th scope="col">Boys</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            ${rows}
-          </tbody>
-        </table>
-
-        <div class="request-area">
-          <a
-            class="request-button"
-            href="${escapeAttribute(
-              state.payload.formUrl
-            )}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Request Flexi Boarding
-          </a>
-
-          <p class="request-help">
-            This opens the booking request form.
-            Availability remains subject to confirmation.
-          </p>
-        </div>
-      </article>
-    `;
-  }
-
-
-  function buildRows(groups) {
-    const years = [
-      'Year 3',
-      'Year 4',
-      'Year 5',
-      'Year 6',
-      'Year 7',
-      'Year 8'
+    const GROUPS = [
+      { key: 'y3Girls', year: 'Year 3', gender: 'Girls' },
+      { key: 'y3Boys', year: 'Year 3', gender: 'Boys' },
+      { key: 'y4Girls', year: 'Year 4', gender: 'Girls' },
+      { key: 'y4Boys', year: 'Year 4', gender: 'Boys' },
+      { key: 'y5Girls', year: 'Year 5', gender: 'Girls' },
+      { key: 'y5Boys', year: 'Year 5', gender: 'Boys' },
+      { key: 'y6Girls', year: 'Year 6', gender: 'Girls' },
+      { key: 'y6Boys', year: 'Year 6', gender: 'Boys' },
+      { key: 'y7Girls', year: 'Year 7', gender: 'Girls' },
+      { key: 'y7Boys', year: 'Year 7', gender: 'Boys' },
+      { key: 'y8Girls', year: 'Year 8', gender: 'Girls' },
+      { key: 'y8Boys', year: 'Year 8', gender: 'Boys' }
     ];
 
-    return years.map(year => {
-      const girls = groups.find(group =>
-        group.year === year &&
-        group.gender === 'Girls'
+    const state = {
+      payload: null,
+      year: null,
+      month: null,
+      selectedDate: null,
+      loading: false
+    };
+
+    const elements = {
+      monthTitle: document.getElementById('monthTitle'),
+      previousMonth:
+        document.getElementById('previousMonth'),
+      nextMonth:
+        document.getElementById('nextMonth'),
+      calendarGrid:
+        document.getElementById('calendarGrid'),
+      detailsArea:
+        document.getElementById('detailsArea'),
+      loadingOverlay:
+        document.getElementById('loadingOverlay'),
+      loadingText:
+        document.getElementById('loadingText'),
+      errorMessage:
+        document.getElementById('errorMessage')
+    };
+
+    elements.previousMonth.addEventListener(
+      'click',
+      () => changeMonth(-1)
+    );
+
+    elements.nextMonth.addEventListener(
+      'click',
+      () => changeMonth(1)
+    );
+
+    initialise();
+
+    async function initialise() {
+      setLoading(true, 'Loading availability…');
+      clearError();
+
+      try {
+        const response = await fetch(
+          './availability.json?time=' + Date.now(),
+          { cache: 'no-store' }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            'Availability data returned HTTP ' +
+            response.status
+          );
+        }
+
+        state.payload = await response.json();
+
+        if (
+          !state.payload.firstDate ||
+          !state.payload.finalDate ||
+          !state.payload.dates
+        ) {
+          throw new Error(
+            'The availability data is incomplete.'
+          );
+        }
+
+        const firstDate = parseIsoDate(
+          state.payload.firstDate
+        );
+
+        state.year = firstDate.getFullYear();
+        state.month = firstDate.getMonth();
+
+        renderCalendar();
+        renderPrompt();
+        setLoading(false);
+      } catch (error) {
+        handleFailure(error);
+      }
+    }
+
+    function changeMonth(direction) {
+      if (state.loading || !state.payload) {
+        return;
+      }
+
+      const requested = new Date(
+        state.year,
+        state.month + direction,
+        1
       );
 
-      const boys = groups.find(group =>
-        group.year === year &&
-        group.gender === 'Boys'
+      if (!isMonthWithinRange(requested)) {
+        return;
+      }
+
+      state.year = requested.getFullYear();
+      state.month = requested.getMonth();
+      state.selectedDate = null;
+
+      renderCalendar();
+      renderPrompt();
+    }
+
+    function isMonthWithinRange(monthDate) {
+      const first = parseIsoDate(
+        state.payload.firstDate
       );
+
+      const last = parseIsoDate(
+        state.payload.finalDate
+      );
+
+      const firstMonth = new Date(
+        first.getFullYear(),
+        first.getMonth(),
+        1
+      );
+
+      const lastMonth = new Date(
+        last.getFullYear(),
+        last.getMonth(),
+        1
+      );
+
+      return (
+        monthDate >= firstMonth &&
+        monthDate <= lastMonth
+      );
+    }
+
+    function renderCalendar() {
+      const monthStart = new Date(
+        state.year,
+        state.month,
+        1
+      );
+
+      const daysInMonth = new Date(
+        state.year,
+        state.month + 1,
+        0
+      ).getDate();
+
+      elements.monthTitle.textContent =
+        monthStart.toLocaleDateString(
+          'en-GB',
+          {
+            month: 'long',
+            year: 'numeric'
+          }
+        );
+
+      const previous = new Date(
+        state.year,
+        state.month - 1,
+        1
+      );
+
+      const next = new Date(
+        state.year,
+        state.month + 1,
+        1
+      );
+
+      elements.previousMonth.disabled =
+        !isMonthWithinRange(previous);
+
+      elements.nextMonth.disabled =
+        !isMonthWithinRange(next);
+
+      elements.calendarGrid.innerHTML = '';
+
+      for (
+        let index = 0;
+        index < monthStart.getDay();
+        index++
+      ) {
+        const placeholder =
+          document.createElement('div');
+
+        placeholder.className = 'placeholder';
+        placeholder.setAttribute(
+          'aria-hidden',
+          'true'
+        );
+
+        elements.calendarGrid.appendChild(
+          placeholder
+        );
+      }
+
+      for (
+        let dayNumber = 1;
+        dayNumber <= daysInMonth;
+        dayNumber++
+      ) {
+        const date = new Date(
+          state.year,
+          state.month,
+          dayNumber
+        );
+
+        const isoDate = formatIsoDate(date);
+
+        const data =
+          state.payload.dates[isoDate] || {
+            status: 'unavailable',
+            selectable: false,
+            groups: {}
+          };
+
+        const day = {
+          date: isoDate,
+          day: dayNumber,
+          status: data.status || 'unavailable',
+          selectable: Boolean(data.selectable),
+
+          groups: GROUPS.map(group => ({
+            ...group,
+            status:
+              data.groups?.[group.key] ||
+              'unavailable'
+          })),
+
+          displayDate: date.toLocaleDateString(
+            'en-GB',
+            {
+              weekday: 'long',
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric'
+            }
+          )
+        };
+
+        renderDayButton(day);
+      }
+    }
+
+    function renderDayButton(day) {
+      const button =
+        document.createElement('button');
+
+      button.type = 'button';
+      button.className = `day ${day.status}`;
+
+      button.setAttribute(
+        'role',
+        'gridcell'
+      );
+
+      button.setAttribute(
+        'aria-label',
+        `${day.displayDate}: ${statusLabel(day.status)}`
+      );
+
+      const number =
+        document.createElement('span');
+
+      number.className = 'day-number';
+      number.textContent = day.day;
+
+      button.appendChild(number);
+
+      if (day.date === state.selectedDate) {
+        button.classList.add('selected');
+      }
+
+      if (day.selectable) {
+        button.addEventListener(
+          'click',
+          () => selectDate(day)
+        );
+      } else {
+        button.disabled = true;
+      }
+
+      elements.calendarGrid.appendChild(button);
+    }
+
+    function selectDate(day) {
+      state.selectedDate = day.date;
+
+      renderCalendar();
+      renderDetails(day);
+
+      window.setTimeout(() => {
+        elements.detailsArea.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 60);
+    }
+
+    function renderPrompt() {
+      elements.detailsArea.innerHTML = `
+        <div class="card prompt">
+          <h2>Select a date</h2>
+          <p>
+            Tap a green or red date to view detailed
+            availability.
+          </p>
+        </div>
+      `;
+    }
+
+    function renderDetails(day) {
+      const rows = buildRows(day.groups);
+
+      elements.detailsArea.innerHTML = `
+        <article class="card details-card">
+          <header class="details-header">
+            <h2>${escapeHtml(day.displayDate)}</h2>
+            <p>
+              Availability is shown separately for
+              boys and girls.
+            </p>
+          </header>
+
+          <table class="availability-table">
+            <thead>
+              <tr>
+                <th scope="col">Year group</th>
+                <th scope="col">Girls</th>
+                <th scope="col">Boys</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              ${rows}
+            </tbody>
+          </table>
+
+          <div class="request-area">
+            <a
+              class="request-button"
+              href="${escapeAttribute(
+                state.payload.formUrl
+              )}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Request Flexi Boarding
+            </a>
+
+            <p class="request-help">
+              This opens the booking request form.
+              Availability remains subject to
+              confirmation.
+            </p>
+          </div>
+        </article>
+      `;
+    }
+
+    function buildRows(groups) {
+      const years = [
+        'Year 3',
+        'Year 4',
+        'Year 5',
+        'Year 6',
+        'Year 7',
+        'Year 8'
+      ];
+
+      return years.map(year => {
+        const girls = groups.find(group =>
+          group.year === year &&
+          group.gender === 'Girls'
+        );
+
+        const boys = groups.find(group =>
+          group.year === year &&
+          group.gender === 'Boys'
+        );
+
+        return `
+          <tr>
+            <td class="year-label">
+              ${escapeHtml(year)}
+            </td>
+
+            <td>
+              ${buildStatus(girls)}
+            </td>
+
+            <td>
+              ${buildStatus(boys)}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function buildStatus(group) {
+      const status =
+        group?.status || 'unavailable';
 
       return `
-        <tr>
-          <td class="year-label">
-            ${escapeHtml(year)}
-          </td>
-
-          <td>
-            ${buildStatus(girls)}
-          </td>
-
-          <td>
-            ${buildStatus(boys)}
-          </td>
-        </tr>
+        <span class="status ${escapeAttribute(status)}">
+          ${escapeHtml(statusLabel(status))}
+        </span>
       `;
-    }).join('');
-  }
-
-
-  function buildStatus(group) {
-    const status =
-      group?.status || 'unavailable';
-
-    return `
-      <span class="status ${escapeAttribute(status)}">
-        ${escapeHtml(statusLabel(status))}
-      </span>
-    `;
-  }
-
-
-  function statusLabel(status) {
-    if (status === 'available') {
-      return 'Available';
     }
 
-    if (status === 'full') {
-      return 'Full';
+    function statusLabel(status) {
+      if (status === 'available') {
+        return 'Available';
+      }
+
+      if (status === 'full') {
+        return 'Full';
+      }
+
+      return 'Unavailable';
     }
 
-    return 'Unavailable';
-  }
+    function parseIsoDate(value) {
+      const parts = String(value)
+        .split('-')
+        .map(Number);
 
-
-  function parseIsoDate(value) {
-    const parts = String(value)
-      .split('-')
-      .map(Number);
-
-    return new Date(
-      parts[0],
-      parts[1] - 1,
-      parts[2]
-    );
-  }
-
-
-  function formatIsoDate(date) {
-    const year = date.getFullYear();
-
-    const month = String(
-      date.getMonth() + 1
-    ).padStart(2, '0');
-
-    const day = String(
-      date.getDate()
-    ).padStart(2, '0');
-
-    return `${year}-${month}-${day}`;
-  }
-
-
-  function setLoading(isLoading, text) {
-    state.loading = isLoading;
-
-    if (text) {
-      elements.loadingText.textContent = text;
+      return new Date(
+        parts[0],
+        parts[1] - 1,
+        parts[2]
+      );
     }
 
-    elements.loadingOverlay.classList.toggle(
-      'hidden',
-      !isLoading
-    );
-  }
+    function formatIsoDate(date) {
+      const year = date.getFullYear();
 
+      const month = String(
+        date.getMonth() + 1
+      ).padStart(2, '0');
 
-  function handleFailure(error) {
-    console.error(error);
+      const day = String(
+        date.getDate()
+      ).padStart(2, '0');
 
-    elements.errorMessage.textContent =
-      'Availability could not be loaded. ' +
-      (
-        error?.message ||
-        'Please try again later.'
+      return `${year}-${month}-${day}`;
+    }
+
+    function setLoading(isLoading, text) {
+      state.loading = isLoading;
+
+      if (text) {
+        elements.loadingText.textContent = text;
+      }
+
+      elements.loadingOverlay.classList.toggle(
+        'hidden',
+        !isLoading
+      );
+    }
+
+    function handleFailure(error) {
+      console.error(error);
+
+      elements.errorMessage.textContent =
+        'Availability could not be loaded. ' +
+        (
+          error?.message ||
+          'Please try again later.'
+        );
+
+      elements.errorMessage.classList.remove(
+        'hidden'
       );
 
-    elements.errorMessage.classList.remove(
-      'hidden'
-    );
+      setLoading(false);
+    }
 
-    setLoading(false);
-  }
+    function clearError() {
+      elements.errorMessage.textContent = '';
 
+      elements.errorMessage.classList.add(
+        'hidden'
+      );
+    }
 
-  function clearError() {
-    elements.errorMessage.textContent = '';
-    elements.errorMessage.classList.add(
-      'hidden'
-    );
-  }
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
 
-
-  function escapeHtml(value) {
-    return String(value ?? '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-  }
-
-
-  function escapeAttribute(value) {
-    return escapeHtml(value);
-  }
-</script>
+    function escapeAttribute(value) {
+      return escapeHtml(value);
+    }
+  </script>
+</body>
+</html>
