@@ -1,28 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-18T22:46:26.559Z",
-  "firstDate": "2026-08-19",
+  "generatedAt": "2026-08-18T23:01:26.592Z",
+  "firstDate": "2026-08-20",
   "finalDate": "2028-07-07",
   "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfnelQj1wo_0tdM_MnfLAOQ8JJIXwMUfqEBfLy4KbV4IlwIRw/viewform?usp=header",
   "dates": {
-    "2026-08-19": {
-      "status": "unavailable",
-      "selectable": false,
-      "groups": {
-        "y3Girls": "unavailable",
-        "y3Boys": "unavailable",
-        "y4Girls": "unavailable",
-        "y4Boys": "unavailable",
-        "y5Girls": "unavailable",
-        "y5Boys": "unavailable",
-        "y6Girls": "unavailable",
-        "y6Boys": "unavailable",
-        "y7Girls": "unavailable",
-        "y7Boys": "unavailable",
-        "y8Girls": "unavailable",
-        "y8Boys": "unavailable"
-      }
-    },
     "2026-08-20": {
       "status": "unavailable",
       "selectable": false,
