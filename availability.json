@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T16:01:25.589Z",
+  "generatedAt": "2026-09-05T16:16:23.690Z",
   "firstDate": "2026-09-06",
   "finalDate": "2028-07-07",
   "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfnelQj1wo_0tdM_MnfLAOQ8JJIXwMUfqEBfLy4KbV4IlwIRw/viewform?usp=header",
@@ -614,7 +614,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-10-10": {
