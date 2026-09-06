@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-06T09:01:37.291Z",
+  "generatedAt": "2026-09-06T09:16:25.345Z",
   "firstDate": "2026-09-07",
   "finalDate": "2028-07-07",
   "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfnelQj1wo_0tdM_MnfLAOQ8JJIXwMUfqEBfLy4KbV4IlwIRw/viewform?usp=header",
@@ -200,7 +200,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-09-18": {
@@ -216,7 +216,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "available",
+        "y7Boys": "full",
         "y8Girls": "available",
         "y8Boys": "available"
       }
@@ -234,7 +234,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "available",
+        "y7Boys": "full",
         "y8Girls": "available",
         "y8Boys": "available"
       }
@@ -252,7 +252,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "available",
+        "y7Boys": "full",
         "y8Girls": "available",
         "y8Boys": "available"
       }
@@ -308,7 +308,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-09-24": {
@@ -326,7 +326,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-09-25": {
@@ -434,7 +434,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-10-01": {
@@ -452,7 +452,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-10-02": {
@@ -560,7 +560,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-10-08": {
@@ -578,7 +578,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-10-09": {
@@ -596,7 +596,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-10-10": {
@@ -686,7 +686,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-10-15": {
@@ -704,7 +704,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-10-16": {
@@ -1082,7 +1082,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-11-06": {
@@ -1100,7 +1100,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-11-07": {
@@ -1190,7 +1190,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-11-12": {
@@ -1208,7 +1208,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-11-13": {
@@ -1352,7 +1352,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-11-21": {
@@ -1442,7 +1442,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-11-26": {
@@ -1460,7 +1460,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-11-27": {
@@ -1586,7 +1586,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-12-04": {
