@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-09T07:46:23.660Z",
+  "generatedAt": "2026-09-09T08:01:30.929Z",
   "firstDate": "2026-09-10",
   "finalDate": "2028-07-07",
   "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfnelQj1wo_0tdM_MnfLAOQ8JJIXwMUfqEBfLy4KbV4IlwIRw/viewform?usp=header",
@@ -157,8 +157,8 @@
         "y3Boys": "available",
         "y4Girls": "available",
         "y4Boys": "available",
-        "y5Girls": "available",
-        "y5Boys": "available",
+        "y5Girls": "blocked",
+        "y5Boys": "blocked",
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
