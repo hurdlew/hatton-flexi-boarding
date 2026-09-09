@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
@@ -307,6 +308,18 @@
       color: #b42318;
     }
 
+    /*
+     * A year group manually blocked through
+     * the "Blocked Dates" sheet.
+     *
+     * Displayed in red, but labelled
+     * "Unavailable" rather than "Full".
+     */
+    .status.blocked {
+      background: rgba(255, 59, 48, 0.13);
+      color: #b42318;
+    }
+
     .status.unavailable {
       background: rgba(142, 142, 147, 0.16);
       color: #646469;
@@ -412,6 +425,7 @@
   <main class="page">
     <header class="site-header">
       <h1>Flexi Boarding</h1>
+
       <p>
         Select a date to view current availability for
         Hatton House.
@@ -485,6 +499,7 @@
     <section id="detailsArea">
       <div class="card prompt">
         <h2>Select a date</h2>
+
         <p>
           Tap a green or red date to view detailed
           availability.
@@ -511,14 +526,19 @@
     const GROUPS = [
       { key: 'y3Girls', year: 'Year 3', gender: 'Girls' },
       { key: 'y3Boys', year: 'Year 3', gender: 'Boys' },
+
       { key: 'y4Girls', year: 'Year 4', gender: 'Girls' },
       { key: 'y4Boys', year: 'Year 4', gender: 'Boys' },
+
       { key: 'y5Girls', year: 'Year 5', gender: 'Girls' },
       { key: 'y5Boys', year: 'Year 5', gender: 'Boys' },
+
       { key: 'y6Girls', year: 'Year 6', gender: 'Girls' },
       { key: 'y6Boys', year: 'Year 6', gender: 'Boys' },
+
       { key: 'y7Girls', year: 'Year 7', gender: 'Girls' },
       { key: 'y7Boys', year: 'Year 7', gender: 'Boys' },
+
       { key: 'y8Girls', year: 'Year 8', gender: 'Girls' },
       { key: 'y8Boys', year: 'Year 8', gender: 'Boys' }
     ];
@@ -532,19 +552,27 @@
     };
 
     const elements = {
-      monthTitle: document.getElementById('monthTitle'),
+      monthTitle:
+        document.getElementById('monthTitle'),
+
       previousMonth:
         document.getElementById('previousMonth'),
+
       nextMonth:
         document.getElementById('nextMonth'),
+
       calendarGrid:
         document.getElementById('calendarGrid'),
+
       detailsArea:
         document.getElementById('detailsArea'),
+
       loadingOverlay:
         document.getElementById('loadingOverlay'),
+
       loadingText:
         document.getElementById('loadingText'),
+
       errorMessage:
         document.getElementById('errorMessage')
     };
@@ -561,14 +589,21 @@
 
     initialise();
 
+
     async function initialise() {
-      setLoading(true, 'Loading availability…');
+      setLoading(
+        true,
+        'Loading availability…'
+      );
+
       clearError();
 
       try {
         const response = await fetch(
           './availability.json?time=' + Date.now(),
-          { cache: 'no-store' }
+          {
+            cache: 'no-store'
+          }
         );
 
         if (!response.ok) {
@@ -599,14 +634,19 @@
 
         renderCalendar();
         renderPrompt();
+
         setLoading(false);
       } catch (error) {
         handleFailure(error);
       }
     }
 
+
     function changeMonth(direction) {
-      if (state.loading || !state.payload) {
+      if (
+        state.loading ||
+        !state.payload
+      ) {
         return;
       }
 
@@ -627,6 +667,7 @@
       renderCalendar();
       renderPrompt();
     }
+
 
     function isMonthWithinRange(monthDate) {
       const first = parseIsoDate(
@@ -654,6 +695,7 @@
         monthDate <= lastMonth
       );
     }
+
 
     function renderCalendar() {
       const monthStart = new Date(
@@ -706,6 +748,7 @@
           document.createElement('div');
 
         placeholder.className = 'placeholder';
+
         placeholder.setAttribute(
           'aria-hidden',
           'true'
@@ -727,7 +770,8 @@
           dayNumber
         );
 
-        const isoDate = formatIsoDate(date);
+        const isoDate =
+          formatIsoDate(date);
 
         const data =
           state.payload.dates[isoDate] || {
@@ -738,38 +782,48 @@
 
         const day = {
           date: isoDate,
+
           day: dayNumber,
-          status: data.status || 'unavailable',
-          selectable: Boolean(data.selectable),
+
+          status:
+            data.status || 'unavailable',
+
+          selectable:
+            Boolean(data.selectable),
 
           groups: GROUPS.map(group => ({
             ...group,
+
             status:
               data.groups?.[group.key] ||
               'unavailable'
           })),
 
-          displayDate: date.toLocaleDateString(
-            'en-GB',
-            {
-              weekday: 'long',
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric'
-            }
-          )
+          displayDate:
+            date.toLocaleDateString(
+              'en-GB',
+              {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+              }
+            )
         };
 
         renderDayButton(day);
       }
     }
 
+
     function renderDayButton(day) {
       const button =
         document.createElement('button');
 
       button.type = 'button';
-      button.className = `day ${day.status}`;
+
+      button.className =
+        `day ${day.status}`;
 
       button.setAttribute(
         'role',
@@ -789,7 +843,10 @@
 
       button.appendChild(number);
 
-      if (day.date === state.selectedDate) {
+      if (
+        day.date ===
+        state.selectedDate
+      ) {
         button.classList.add('selected');
       }
 
@@ -802,8 +859,11 @@
         button.disabled = true;
       }
 
-      elements.calendarGrid.appendChild(button);
+      elements.calendarGrid.appendChild(
+        button
+      );
     }
+
 
     function selectDate(day) {
       state.selectedDate = day.date;
@@ -819,10 +879,12 @@
       }, 60);
     }
 
+
     function renderPrompt() {
       elements.detailsArea.innerHTML = `
         <div class="card prompt">
           <h2>Select a date</h2>
+
           <p>
             Tap a green or red date to view detailed
             availability.
@@ -831,13 +893,19 @@
       `;
     }
 
+
     function renderDetails(day) {
-      const rows = buildRows(day.groups);
+      const rows =
+        buildRows(day.groups);
 
       elements.detailsArea.innerHTML = `
         <article class="card details-card">
+
           <header class="details-header">
-            <h2>${escapeHtml(day.displayDate)}</h2>
+            <h2>
+              ${escapeHtml(day.displayDate)}
+            </h2>
+
             <p>
               Availability is shown separately for
               boys and girls.
@@ -847,9 +915,17 @@
           <table class="availability-table">
             <thead>
               <tr>
-                <th scope="col">Year group</th>
-                <th scope="col">Girls</th>
-                <th scope="col">Boys</th>
+                <th scope="col">
+                  Year group
+                </th>
+
+                <th scope="col">
+                  Girls
+                </th>
+
+                <th scope="col">
+                  Boys
+                </th>
               </tr>
             </thead>
 
@@ -876,9 +952,11 @@
               confirmation.
             </p>
           </div>
+
         </article>
       `;
     }
+
 
     function buildRows(groups) {
       const years = [
@@ -891,15 +969,17 @@
       ];
 
       return years.map(year => {
-        const girls = groups.find(group =>
-          group.year === year &&
-          group.gender === 'Girls'
-        );
+        const girls =
+          groups.find(group =>
+            group.year === year &&
+            group.gender === 'Girls'
+          );
 
-        const boys = groups.find(group =>
-          group.year === year &&
-          group.gender === 'Boys'
-        );
+        const boys =
+          groups.find(group =>
+            group.year === year &&
+            group.gender === 'Boys'
+          );
 
         return `
           <tr>
@@ -919,16 +999,21 @@
       }).join('');
     }
 
+
     function buildStatus(group) {
       const status =
-        group?.status || 'unavailable';
+        group?.status ||
+        'unavailable';
 
       return `
-        <span class="status ${escapeAttribute(status)}">
+        <span
+          class="status ${escapeAttribute(status)}"
+        >
           ${escapeHtml(statusLabel(status))}
         </span>
       `;
     }
+
 
     function statusLabel(status) {
       if (status === 'available') {
@@ -939,8 +1024,17 @@
         return 'Full';
       }
 
+      /*
+       * Blocked year groups appear red,
+       * but parents simply see "Unavailable".
+       */
+      if (status === 'blocked') {
+        return 'Unavailable';
+      }
+
       return 'Unavailable';
     }
+
 
     function parseIsoDate(value) {
       const parts = String(value)
@@ -954,8 +1048,10 @@
       );
     }
 
+
     function formatIsoDate(date) {
-      const year = date.getFullYear();
+      const year =
+        date.getFullYear();
 
       const month = String(
         date.getMonth() + 1
@@ -968,11 +1064,16 @@
       return `${year}-${month}-${day}`;
     }
 
-    function setLoading(isLoading, text) {
+
+    function setLoading(
+      isLoading,
+      text
+    ) {
       state.loading = isLoading;
 
       if (text) {
-        elements.loadingText.textContent = text;
+        elements.loadingText.textContent =
+          text;
       }
 
       elements.loadingOverlay.classList.toggle(
@@ -980,6 +1081,7 @@
         !isLoading
       );
     }
+
 
     function handleFailure(error) {
       console.error(error);
@@ -998,6 +1100,7 @@
       setLoading(false);
     }
 
+
     function clearError() {
       elements.errorMessage.textContent = '';
 
@@ -1005,6 +1108,7 @@
         'hidden'
       );
     }
+
 
     function escapeHtml(value) {
       return String(value ?? '')
@@ -1014,6 +1118,7 @@
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
     }
+
 
     function escapeAttribute(value) {
       return escapeHtml(value);
