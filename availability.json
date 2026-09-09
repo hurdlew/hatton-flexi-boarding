@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-09T19:01:23.147Z",
+  "generatedAt": "2026-09-09T19:16:24.415Z",
   "firstDate": "2026-09-10",
   "finalDate": "2028-07-07",
   "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfnelQj1wo_0tdM_MnfLAOQ8JJIXwMUfqEBfLy4KbV4IlwIRw/viewform?usp=header",
@@ -423,8 +423,8 @@
       "status": "available",
       "selectable": true,
       "groups": {
-        "y3Girls": "available",
-        "y3Boys": "available",
+        "y3Girls": "blocked",
+        "y3Boys": "blocked",
         "y4Girls": "available",
         "y4Boys": "available",
         "y5Girls": "available",
@@ -1179,8 +1179,8 @@
       "status": "available",
       "selectable": true,
       "groups": {
-        "y3Girls": "available",
-        "y3Boys": "available",
+        "y3Girls": "blocked",
+        "y3Boys": "blocked",
         "y4Girls": "available",
         "y4Boys": "available",
         "y5Girls": "available",
@@ -2439,8 +2439,8 @@
       "status": "available",
       "selectable": true,
       "groups": {
-        "y3Girls": "available",
-        "y3Boys": "available",
+        "y3Girls": "blocked",
+        "y3Boys": "blocked",
         "y4Girls": "available",
         "y4Boys": "available",
         "y5Girls": "available",
