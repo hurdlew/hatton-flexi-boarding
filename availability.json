@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-13T20:01:24.106Z",
+  "generatedAt": "2026-09-13T20:16:23.822Z",
   "firstDate": "2026-09-14",
   "finalDate": "2028-07-07",
   "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfnelQj1wo_0tdM_MnfLAOQ8JJIXwMUfqEBfLy4KbV4IlwIRw/viewform?usp=header",
@@ -353,16 +353,16 @@
       "groups": {
         "y3Girls": "blocked",
         "y3Boys": "blocked",
-        "y4Girls": "available",
-        "y4Boys": "available",
-        "y5Girls": "available",
-        "y5Boys": "available",
-        "y6Girls": "available",
-        "y6Boys": "available",
-        "y7Girls": "available",
-        "y7Boys": "available",
-        "y8Girls": "available",
-        "y8Boys": "available"
+        "y4Girls": "blocked",
+        "y4Boys": "blocked",
+        "y5Girls": "blocked",
+        "y5Boys": "blocked",
+        "y6Girls": "blocked",
+        "y6Boys": "blocked",
+        "y7Girls": "blocked",
+        "y7Boys": "blocked",
+        "y8Girls": "blocked",
+        "y8Boys": "blocked"
       }
     },
     "2026-10-04": {
@@ -371,16 +371,16 @@
       "groups": {
         "y3Girls": "blocked",
         "y3Boys": "blocked",
-        "y4Girls": "available",
-        "y4Boys": "available",
-        "y5Girls": "available",
-        "y5Boys": "available",
-        "y6Girls": "available",
-        "y6Boys": "available",
-        "y7Girls": "available",
-        "y7Boys": "available",
-        "y8Girls": "available",
-        "y8Boys": "available"
+        "y4Girls": "blocked",
+        "y4Boys": "blocked",
+        "y5Girls": "blocked",
+        "y5Boys": "blocked",
+        "y6Girls": "blocked",
+        "y6Boys": "blocked",
+        "y7Girls": "blocked",
+        "y7Boys": "blocked",
+        "y8Girls": "blocked",
+        "y8Boys": "blocked"
       }
     },
     "2026-10-05": {
@@ -479,16 +479,16 @@
       "groups": {
         "y3Girls": "blocked",
         "y3Boys": "blocked",
-        "y4Girls": "available",
-        "y4Boys": "available",
-        "y5Girls": "available",
-        "y5Boys": "available",
-        "y6Girls": "available",
-        "y6Boys": "available",
-        "y7Girls": "available",
-        "y7Boys": "available",
-        "y8Girls": "available",
-        "y8Boys": "available"
+        "y4Girls": "blocked",
+        "y4Boys": "blocked",
+        "y5Girls": "blocked",
+        "y5Boys": "blocked",
+        "y6Girls": "blocked",
+        "y6Boys": "blocked",
+        "y7Girls": "blocked",
+        "y7Boys": "blocked",
+        "y8Girls": "blocked",
+        "y8Boys": "blocked"
       }
     },
     "2026-10-11": {
@@ -875,16 +875,16 @@
       "groups": {
         "y3Girls": "blocked",
         "y3Boys": "blocked",
-        "y4Girls": "unavailable",
-        "y4Boys": "unavailable",
-        "y5Girls": "unavailable",
-        "y5Boys": "unavailable",
-        "y6Girls": "unavailable",
-        "y6Boys": "unavailable",
-        "y7Girls": "unavailable",
-        "y7Boys": "unavailable",
-        "y8Girls": "unavailable",
-        "y8Boys": "unavailable"
+        "y4Girls": "blocked",
+        "y4Boys": "blocked",
+        "y5Girls": "blocked",
+        "y5Boys": "blocked",
+        "y6Girls": "blocked",
+        "y6Boys": "blocked",
+        "y7Girls": "blocked",
+        "y7Boys": "blocked",
+        "y8Girls": "blocked",
+        "y8Boys": "blocked"
       }
     },
     "2026-11-02": {
@@ -893,16 +893,16 @@
       "groups": {
         "y3Girls": "blocked",
         "y3Boys": "blocked",
-        "y4Girls": "available",
-        "y4Boys": "available",
-        "y5Girls": "available",
-        "y5Boys": "available",
-        "y6Girls": "available",
-        "y6Boys": "available",
-        "y7Girls": "available",
-        "y7Boys": "available",
-        "y8Girls": "available",
-        "y8Boys": "available"
+        "y4Girls": "blocked",
+        "y4Boys": "blocked",
+        "y5Girls": "blocked",
+        "y5Boys": "blocked",
+        "y6Girls": "blocked",
+        "y6Boys": "blocked",
+        "y7Girls": "blocked",
+        "y7Boys": "blocked",
+        "y8Girls": "blocked",
+        "y8Boys": "blocked"
       }
     },
     "2026-11-03": {
@@ -1109,16 +1109,16 @@
       "groups": {
         "y3Girls": "blocked",
         "y3Boys": "blocked",
-        "y4Girls": "available",
-        "y4Boys": "available",
-        "y5Girls": "available",
-        "y5Boys": "available",
-        "y6Girls": "available",
-        "y6Boys": "available",
-        "y7Girls": "available",
-        "y7Boys": "available",
-        "y8Girls": "available",
-        "y8Boys": "available"
+        "y4Girls": "blocked",
+        "y4Boys": "blocked",
+        "y5Girls": "blocked",
+        "y5Boys": "blocked",
+        "y6Girls": "blocked",
+        "y6Boys": "blocked",
+        "y7Girls": "blocked",
+        "y7Boys": "blocked",
+        "y8Girls": "blocked",
+        "y8Boys": "blocked"
       }
     },
     "2026-11-15": {
@@ -2369,16 +2369,16 @@
       "groups": {
         "y3Girls": "blocked",
         "y3Boys": "blocked",
-        "y4Girls": "available",
-        "y4Boys": "available",
-        "y5Girls": "available",
-        "y5Boys": "available",
-        "y6Girls": "available",
-        "y6Boys": "available",
-        "y7Girls": "available",
-        "y7Boys": "available",
-        "y8Girls": "available",
-        "y8Boys": "available"
+        "y4Girls": "blocked",
+        "y4Boys": "blocked",
+        "y5Girls": "blocked",
+        "y5Boys": "blocked",
+        "y6Girls": "blocked",
+        "y6Boys": "blocked",
+        "y7Girls": "blocked",
+        "y7Boys": "blocked",
+        "y8Girls": "blocked",
+        "y8Boys": "blocked"
       }
     },
     "2027-01-24": {
@@ -4403,16 +4403,16 @@
       "groups": {
         "y3Girls": "blocked",
         "y3Boys": "blocked",
-        "y4Girls": "available",
-        "y4Boys": "available",
-        "y5Girls": "available",
-        "y5Boys": "available",
-        "y6Girls": "available",
-        "y6Boys": "available",
-        "y7Girls": "available",
-        "y7Boys": "available",
-        "y8Girls": "available",
-        "y8Boys": "available"
+        "y4Girls": "blocked",
+        "y4Boys": "blocked",
+        "y5Girls": "blocked",
+        "y5Boys": "blocked",
+        "y6Girls": "blocked",
+        "y6Boys": "blocked",
+        "y7Girls": "blocked",
+        "y7Boys": "blocked",
+        "y8Girls": "blocked",
+        "y8Boys": "blocked"
       }
     },
     "2027-05-17": {
@@ -4511,16 +4511,16 @@
       "groups": {
         "y3Girls": "blocked",
         "y3Boys": "blocked",
-        "y4Girls": "available",
-        "y4Boys": "available",
-        "y5Girls": "available",
-        "y5Boys": "available",
-        "y6Girls": "available",
-        "y6Boys": "available",
-        "y7Girls": "available",
-        "y7Boys": "available",
-        "y8Girls": "available",
-        "y8Boys": "available"
+        "y4Girls": "blocked",
+        "y4Boys": "blocked",
+        "y5Girls": "blocked",
+        "y5Boys": "blocked",
+        "y6Girls": "blocked",
+        "y6Boys": "blocked",
+        "y7Girls": "blocked",
+        "y7Boys": "blocked",
+        "y8Girls": "blocked",
+        "y8Boys": "blocked"
       }
     },
     "2027-05-23": {
