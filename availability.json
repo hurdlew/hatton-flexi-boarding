@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T11:01:25.691Z",
+  "generatedAt": "2026-09-14T11:16:24.063Z",
   "firstDate": "2026-09-15",
   "finalDate": "2028-07-07",
   "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfnelQj1wo_0tdM_MnfLAOQ8JJIXwMUfqEBfLy4KbV4IlwIRw/viewform?usp=header",
@@ -72,7 +72,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
         "y8Boys": "available"
       }
@@ -90,7 +90,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
         "y8Boys": "available"
       }
@@ -108,7 +108,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
         "y8Boys": "available"
       }
