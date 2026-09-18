@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T08:01:25.064Z",
+  "generatedAt": "2026-09-18T08:16:28.325Z",
   "firstDate": "2026-09-19",
   "finalDate": "2028-07-07",
   "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfnelQj1wo_0tdM_MnfLAOQ8JJIXwMUfqEBfLy4KbV4IlwIRw/viewform?usp=header",
@@ -891,36 +891,36 @@
       "status": "available",
       "selectable": true,
       "groups": {
-        "y3Girls": "available",
-        "y3Boys": "available",
-        "y4Girls": "available",
-        "y4Boys": "available",
-        "y5Girls": "available",
-        "y5Boys": "available",
-        "y6Girls": "available",
-        "y6Boys": "available",
-        "y7Girls": "available",
-        "y7Boys": "available",
-        "y8Girls": "available",
-        "y8Boys": "available"
+        "y3Girls": "blocked",
+        "y3Boys": "blocked",
+        "y4Girls": "blocked",
+        "y4Boys": "blocked",
+        "y5Girls": "blocked",
+        "y5Boys": "blocked",
+        "y6Girls": "blocked",
+        "y6Boys": "blocked",
+        "y7Girls": "blocked",
+        "y7Boys": "blocked",
+        "y8Girls": "blocked",
+        "y8Boys": "blocked"
       }
     },
     "2026-11-08": {
       "status": "available",
       "selectable": true,
       "groups": {
-        "y3Girls": "available",
-        "y3Boys": "available",
-        "y4Girls": "available",
-        "y4Boys": "available",
-        "y5Girls": "available",
-        "y5Boys": "available",
-        "y6Girls": "available",
-        "y6Boys": "available",
-        "y7Girls": "available",
-        "y7Boys": "available",
-        "y8Girls": "available",
-        "y8Boys": "available"
+        "y3Girls": "blocked",
+        "y3Boys": "blocked",
+        "y4Girls": "blocked",
+        "y4Boys": "blocked",
+        "y5Girls": "blocked",
+        "y5Boys": "blocked",
+        "y6Girls": "blocked",
+        "y6Boys": "blocked",
+        "y7Girls": "blocked",
+        "y7Boys": "blocked",
+        "y8Girls": "blocked",
+        "y8Boys": "blocked"
       }
     },
     "2026-11-09": {
