@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-20T01:31:23.024Z",
+  "generatedAt": "2026-10-20T01:46:23.059Z",
   "firstDate": "2026-10-21",
   "finalDate": "2028-07-07",
   "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfnelQj1wo_0tdM_MnfLAOQ8JJIXwMUfqEBfLy4KbV4IlwIRw/viewform?usp=header",
@@ -290,7 +290,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-06": {
@@ -308,7 +308,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-07": {
@@ -360,7 +360,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
         "y8Boys": "available"
       }
@@ -378,7 +378,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
         "y8Boys": "available"
       }
@@ -396,9 +396,9 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-12": {
@@ -414,9 +414,9 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-13": {
@@ -434,7 +434,7 @@
         "y7Girls": "blocked",
         "y7Boys": "blocked",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-14": {
@@ -560,7 +560,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-21": {
@@ -650,7 +650,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-26": {
@@ -668,7 +668,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-27": {
@@ -794,7 +794,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-12-04": {
