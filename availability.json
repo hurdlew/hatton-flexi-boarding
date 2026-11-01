@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-01T20:01:24.345Z",
+  "generatedAt": "2026-11-01T20:16:26.894Z",
   "firstDate": "2026-11-02",
   "finalDate": "2028-07-07",
   "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfnelQj1wo_0tdM_MnfLAOQ8JJIXwMUfqEBfLy4KbV4IlwIRw/viewform?usp=header",
@@ -144,9 +144,9 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-11-10": {
@@ -162,9 +162,9 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-11-11": {
@@ -180,7 +180,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
         "y8Boys": "full"
       }
@@ -198,7 +198,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
         "y8Boys": "full"
       }
@@ -254,7 +254,7 @@
         "y7Girls": "blocked",
         "y7Boys": "blocked",
         "y8Girls": "available",
-        "y8Boys": "available"
+        "y8Boys": "full"
       }
     },
     "2026-11-16": {
