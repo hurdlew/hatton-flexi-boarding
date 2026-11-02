@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-02T11:16:49.469Z",
+  "generatedAt": "2026-11-02T11:31:31.505Z",
   "firstDate": "2026-11-03",
   "finalDate": "2028-07-07",
   "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfnelQj1wo_0tdM_MnfLAOQ8JJIXwMUfqEBfLy4KbV4IlwIRw/viewform?usp=header",
@@ -74,7 +74,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-07": {
@@ -128,7 +128,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-10": {
@@ -146,7 +146,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-11": {
@@ -164,7 +164,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-12": {
@@ -182,7 +182,7 @@
         "y7Girls": "available",
         "y7Boys": "available",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-13": {
@@ -200,7 +200,7 @@
         "y7Girls": "blocked",
         "y7Boys": "blocked",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-14": {
@@ -236,7 +236,7 @@
         "y7Girls": "blocked",
         "y7Boys": "blocked",
         "y8Girls": "available",
-        "y8Boys": "full"
+        "y8Boys": "available"
       }
     },
     "2026-11-16": {
@@ -360,7 +360,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
         "y8Boys": "available"
       }
@@ -378,7 +378,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "available",
         "y8Boys": "available"
       }
@@ -666,7 +666,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "unavailable",
         "y8Boys": "unavailable"
       }
@@ -684,7 +684,7 @@
         "y6Girls": "available",
         "y6Boys": "available",
         "y7Girls": "available",
-        "y7Boys": "full",
+        "y7Boys": "available",
         "y8Girls": "unavailable",
         "y8Boys": "unavailable"
       }
